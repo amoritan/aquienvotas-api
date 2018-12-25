@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_231150) do
+ActiveRecord::Schema.define(version: 2018_12_25_234220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -86,10 +86,20 @@ ActiveRecord::Schema.define(version: 2018_12_25_231150) do
     t.index ["origin_id"], name: "index_provinces_on_origin_id", unique: true
   end
 
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "phone"
+    t.string "token"
+    t.uuid "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_users_on_city_id"
+  end
+
   add_foreign_key "ballots", "provinces"
   add_foreign_key "ballots_candidates", "ballots"
   add_foreign_key "ballots_candidates", "candidates"
   add_foreign_key "candidates", "parties"
   add_foreign_key "cities", "provinces"
   add_foreign_key "poll_options", "polls"
+  add_foreign_key "users", "cities"
 end
