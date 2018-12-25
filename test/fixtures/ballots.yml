@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  status: 1
+  expires_at: 2018-12-25 19:34:13
+  province: one
+
+two:
+  name: MyString
+  status: 1
+  expires_at: 2018-12-25 19:34:13
+  province: two
