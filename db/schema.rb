@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_223902) do
+ActiveRecord::Schema.define(version: 2018_12_25_231150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -26,12 +26,50 @@ ActiveRecord::Schema.define(version: 2018_12_25_223902) do
     t.index ["province_id"], name: "index_ballots_on_province_id"
   end
 
+  create_table "ballots_candidates", id: false, force: :cascade do |t|
+    t.uuid "ballot_id"
+    t.uuid "candidate_id"
+    t.index ["ballot_id"], name: "index_ballots_candidates_on_ballot_id"
+    t.index ["candidate_id"], name: "index_ballots_candidates_on_candidate_id"
+  end
+
+  create_table "candidates", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "color", limit: 6
+    t.integer "status", limit: 2, default: 1
+    t.uuid "party_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["party_id"], name: "index_candidates_on_party_id"
+  end
+
   create_table "cities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "origin_id", limit: 6
     t.uuid "province_id"
     t.index ["origin_id"], name: "index_cities_on_origin_id", unique: true
     t.index ["province_id"], name: "index_cities_on_province_id"
+  end
+
+  create_table "parties", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "color", limit: 6
+    t.integer "status", limit: 2, default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "poll_options", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "color", limit: 6
+    t.integer "status", limit: 2, default: 1
+    t.uuid "poll_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
   create_table "polls", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -49,5 +87,9 @@ ActiveRecord::Schema.define(version: 2018_12_25_223902) do
   end
 
   add_foreign_key "ballots", "provinces"
+  add_foreign_key "ballots_candidates", "ballots"
+  add_foreign_key "ballots_candidates", "candidates"
+  add_foreign_key "candidates", "parties"
   add_foreign_key "cities", "provinces"
+  add_foreign_key "poll_options", "polls"
 end
