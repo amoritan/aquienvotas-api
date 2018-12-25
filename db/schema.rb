@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_132438) do
+ActiveRecord::Schema.define(version: 2018_12_25_152512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -69,6 +69,14 @@ ActiveRecord::Schema.define(version: 2018_12_25_132438) do
     t.index ["user_id"], name: "auth_user_user_permissions_user_id_a95ead1b"
   end
 
+  create_table "cities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "origin_id", limit: 6
+    t.uuid "province_id"
+    t.index ["origin_id"], name: "index_cities_on_origin_id", unique: true
+    t.index ["province_id"], name: "index_cities_on_province_id"
+  end
+
   create_table "django_admin_log", id: :serial, force: :cascade do |t|
     t.datetime "action_time", null: false
     t.text "object_id"
@@ -100,6 +108,12 @@ ActiveRecord::Schema.define(version: 2018_12_25_132438) do
     t.index ["session_key"], name: "django_session_session_key_c0390e0f_like", opclass: :varchar_pattern_ops
   end
 
+  create_table "provinces", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "origin_id", limit: 6
+    t.index ["origin_id"], name: "index_provinces_on_origin_id", unique: true
+  end
+
   add_foreign_key "auth_group_permissions", "auth_group", column: "group_id", name: "auth_group_permissions_group_id_b120cbf9_fk_auth_group_id"
   add_foreign_key "auth_group_permissions", "auth_permission", column: "permission_id", name: "auth_group_permissio_permission_id_84c5c92e_fk_auth_perm"
   add_foreign_key "auth_permission", "django_content_type", column: "content_type_id", name: "auth_permission_content_type_id_2f476e4b_fk_django_co"
@@ -107,6 +121,7 @@ ActiveRecord::Schema.define(version: 2018_12_25_132438) do
   add_foreign_key "auth_user_groups", "auth_user", column: "user_id", name: "auth_user_groups_user_id_6a12ed8b_fk_auth_user_id"
   add_foreign_key "auth_user_user_permissions", "auth_permission", column: "permission_id", name: "auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm"
   add_foreign_key "auth_user_user_permissions", "auth_user", column: "user_id", name: "auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id"
+  add_foreign_key "cities", "provinces"
   add_foreign_key "django_admin_log", "auth_user", column: "user_id", name: "django_admin_log_user_id_c564eba6_fk_auth_user_id"
   add_foreign_key "django_admin_log", "django_content_type", column: "content_type_id", name: "django_admin_log_content_type_id_c4bce8eb_fk_django_co"
 end
