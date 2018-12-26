@@ -1,5 +1,5 @@
 class PollOption < ApplicationRecord
-  include VotingOption
+  include Choice
 
   belongs_to :poll
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_234220) do
+ActiveRecord::Schema.define(version: 2018_12_26_000028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -95,6 +95,19 @@ ActiveRecord::Schema.define(version: 2018_12_25_234220) do
     t.index ["city_id"], name: "index_users_on_city_id"
   end
 
+  create_table "votes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.string "voting_type"
+    t.uuid "voting_id"
+    t.string "choice_type"
+    t.uuid "choice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["choice_type", "choice_id"], name: "index_votes_on_choice_type_and_choice_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["voting_type", "voting_id"], name: "index_votes_on_voting_type_and_voting_id"
+  end
+
   add_foreign_key "ballots", "provinces"
   add_foreign_key "ballots_candidates", "ballots"
   add_foreign_key "ballots_candidates", "candidates"
@@ -102,4 +115,5 @@ ActiveRecord::Schema.define(version: 2018_12_25_234220) do
   add_foreign_key "cities", "provinces"
   add_foreign_key "poll_options", "polls"
   add_foreign_key "users", "cities"
+  add_foreign_key "votes", "users"
 end

@@ -1,5 +1,5 @@
 class Candidate < ApplicationRecord
-  include VotingOption
+  include Choice
 
   belongs_to :party
   has_and_belongs_to_many :ballots

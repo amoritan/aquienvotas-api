@@ -1,4 +1,4 @@
-module VotingOption
+module Choice
   extend ActiveSupport::Concern
 
   included do

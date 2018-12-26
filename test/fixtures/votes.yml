@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  voting: one
+  voting_type: Voting
+  choice: one
+  choice_type: Choice
+
+two:
+  user: two
+  voting: two
+  voting_type: Voting
+  choice: two
+  choice_type: Choice
