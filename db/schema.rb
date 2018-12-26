@@ -87,11 +87,13 @@ ActiveRecord::Schema.define(version: 2018_12_26_000028) do
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "phone"
-    t.string "token"
+    t.string "account_id"
+    t.string "access_token"
+    t.datetime "access_token_expires_at"
     t.uuid "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_users_on_account_id", unique: true
     t.index ["city_id"], name: "index_users_on_city_id"
   end
 

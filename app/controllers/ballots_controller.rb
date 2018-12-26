@@ -1,5 +1,5 @@
 class BallotsController < ApplicationController
-  def index
+  def national
     @ballot = Ballot.first
     render json: @ballot, include: ['candidates', 'candidates.party']
   end
