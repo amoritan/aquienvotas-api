@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # resources :ballots, only: [:index]
-  get 'ballots/national'
+  resources :ballots, only: [:index] do
+    post 'vote', on: :member
+  end
 
   post 'authentication/authenticate'
   get 'authentication/fetch'
