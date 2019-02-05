@@ -3,9 +3,9 @@
 one:
   phone: MyString
   token: MyString
-  city: one
+  location: one
 
 two:
   phone: MyString
   token: MyString
-  city: two
+  location: two

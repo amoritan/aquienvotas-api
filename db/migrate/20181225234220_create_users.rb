@@ -4,7 +4,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :account_id
       t.string :access_token
       t.datetime :access_token_expires_at
-      t.references :city, type: :uuid, foreign_key: true
+      t.references :location, type: :uuid, foreign_key: true
+      t.integer :gender, limit: 1
+      t.integer :age, limit: 1
 
       t.timestamps
     end

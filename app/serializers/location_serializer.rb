@@ -1,4 +1,4 @@
-class CitySerializer < ActiveModel::Serializer
+class LocationSerializer < ActiveModel::Serializer
   attributes :id, :name
   belongs_to :province
 end

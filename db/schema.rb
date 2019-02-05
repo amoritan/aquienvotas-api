@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 2018_12_26_000028) do
     t.index ["party_id"], name: "index_candidates_on_party_id"
   end
 
-  create_table "cities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
-    t.string "origin_id", limit: 6
+    t.bigint "population"
+    t.jsonb "demographics", default: {"male"=>[0, 0, 0, 0, 0], "female"=>[0, 0, 0, 0, 0]}
     t.uuid "province_id"
-    t.index ["origin_id"], name: "index_cities_on_origin_id", unique: true
-    t.index ["province_id"], name: "index_cities_on_province_id"
+    t.index ["province_id"], name: "index_locations_on_province_id"
   end
 
   create_table "parties", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -82,19 +82,21 @@ ActiveRecord::Schema.define(version: 2018_12_26_000028) do
 
   create_table "provinces", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
-    t.string "origin_id", limit: 6
-    t.index ["origin_id"], name: "index_provinces_on_origin_id", unique: true
+    t.string "code", limit: 4
+    t.index ["code"], name: "index_provinces_on_code", unique: true
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "account_id"
     t.string "access_token"
     t.datetime "access_token_expires_at"
-    t.uuid "city_id"
+    t.uuid "location_id"
+    t.integer "gender", limit: 2
+    t.integer "age", limit: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_users_on_account_id", unique: true
-    t.index ["city_id"], name: "index_users_on_city_id"
+    t.index ["location_id"], name: "index_users_on_location_id"
   end
 
   create_table "votes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -114,8 +116,8 @@ ActiveRecord::Schema.define(version: 2018_12_26_000028) do
   add_foreign_key "ballots_candidates", "ballots"
   add_foreign_key "ballots_candidates", "candidates"
   add_foreign_key "candidates", "parties"
-  add_foreign_key "cities", "provinces"
+  add_foreign_key "locations", "provinces"
   add_foreign_key "poll_options", "polls"
-  add_foreign_key "users", "cities"
+  add_foreign_key "users", "locations"
   add_foreign_key "votes", "users"
 end
