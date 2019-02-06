@@ -18,7 +18,7 @@ namespace :voting do
             if group_votes.count > 0
               votes_percentage = Float(group_votes.count.to_f / votes.count.to_f)
               population_percentage = Float(group_population.to_f / population.to_f)
-              coefficient = Float(population_percentage / votes_percentage)
+              coefficient = Float(votes_percentage / population_percentage)
               result = votes_percentage * coefficient
               puts "#{location.name}/#{gender}/#{User.ages.key(age)}: #{votes_percentage}/#{population_percentage}/#{coefficient}/#{result}"
               
