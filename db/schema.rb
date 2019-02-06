@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_12_26_000028) do
     t.integer "status", limit: 2, default: 1
     t.datetime "expires_at"
     t.uuid "province_id"
+    t.jsonb "results", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["province_id"], name: "index_ballots_on_province_id"

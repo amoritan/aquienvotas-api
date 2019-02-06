@@ -5,6 +5,7 @@ class CreateBallots < ActiveRecord::Migration[5.2]
       t.integer :status, limit: 1, default: 1
       t.datetime :expires_at
       t.references :province, type: :uuid, foreign_key: true
+      t.jsonb :results, default: {}
 
       t.timestamps
     end

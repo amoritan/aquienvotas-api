@@ -6,21 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# redParty = Party.create(name: 'Red Party', description: 'The Red Party', color: 'ff0000')
-# greenParty = Party.create(name: 'Green Party', description: 'The Green Party', color: '00ff00')
-# blueParty = Party.create(name: 'Blue Party', description: 'The Blue Party', color: '0000ff')
-
-# candidateA = Candidate.create(name: 'AAA', description: 'AAA for the Red Party', party: redParty)
-# candidateB = Candidate.create(name: 'BBB', description: 'BBB for the Green Party', party: greenParty)
-# candidateC = Candidate.create(name: 'CCC', description: 'CCC for the Blue Party', party: blueParty)
-
-# ballotDemo = Ballot.create(name: 'Ballot Demo', expires_at: Time.now + 1.years, candidates: [candidateA, candidateB, candidateC])
-
-# pollDemo = Poll.create(name: 'Poll Demo', expires_at: Time.now + 1.years)
-
-# PollOption.create(name: 'Black', description: 'Black Color', color: '000000', poll: pollDemo)
-# PollOption.create(name: 'White', description: 'White Color', color: 'ffffff', poll: pollDemo)
-
 provinces = [
   { name: "Ciudad Autónoma de Buenos Aires", code: "AR-C", locations: [ { name: "Ciudad Autónoma de Buenos Aires", population: 3112284, demographics: { female: [ 186484, 426370, 392963, 220558, 405546 ], male: [ 192397, 429456, 384609, 201829, 272072 ] } } ] },
   { name: "Buenos Aires", code: "AR-B", locations: [ { name: "Gran Buenos Aires", population: 8224184, demographics: { female: [ 706724, 1225892, 998278, 524040, 780540 ], male: [ 732603, 1249216, 968976, 476731, 561183 ] } }, { name: "Interior de Buenos Aires", population: 442841, demographics: { female: [ 380543, 660096, 537535, 282175, 420291 ], male: [ 394479, 672655, 521757, 256701, 302175 ] } } ] },
@@ -54,3 +39,18 @@ provinces.each do |province|
     Location.create(name: location[:name], population: location[:population], demographics: location[:demographics], province: _province)
   end
 end
+
+redParty = Party.create(name: 'Red Party', description: 'The Red Party', color: 'ff0000')
+greenParty = Party.create(name: 'Green Party', description: 'The Green Party', color: '00ff00')
+blueParty = Party.create(name: 'Blue Party', description: 'The Blue Party', color: '0000ff')
+
+candidateA = Candidate.create(name: 'AAA', description: 'AAA for the Red Party', party: redParty)
+candidateB = Candidate.create(name: 'BBB', description: 'BBB for the Green Party', party: greenParty)
+candidateC = Candidate.create(name: 'CCC', description: 'CCC for the Blue Party', party: blueParty)
+
+ballotDemo = Ballot.create(name: 'Ballot Demo', expires_at: Time.now + 1.years, candidates: [candidateA, candidateB, candidateC])
+
+# pollDemo = Poll.create(name: 'Poll Demo', expires_at: Time.now + 1.years)
+
+# PollOption.create(name: 'Black', description: 'Black Color', color: '000000', poll: pollDemo)
+# PollOption.create(name: 'White', description: 'White Color', color: 'ffffff', poll: pollDemo)
