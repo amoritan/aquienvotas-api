@@ -43,7 +43,7 @@ namespace :voting do
 
         puts "    Adding votes without demographics"
 
-        location_votes = votes.where(users: { location: location, gender: nil, age: nil })
+        location_votes = votes.where(users: { location: location, gender: [nil, :other], age: nil })
         if location_votes.count > 0
           votes_percentage = location_votes.count.to_f / votes.count.to_f
           population_percentage = location.population.to_f / population.to_f
