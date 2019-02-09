@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :gender, :age
   belongs_to :location
   has_many :votes
 end
