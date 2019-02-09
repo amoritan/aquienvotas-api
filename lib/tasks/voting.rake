@@ -12,13 +12,14 @@ namespace :voting do
       results = candidates.map{ |c| [c.id, 0] }.to_h
 
       locations.each do |location|
+
         location.demographics.keys.each do |gender|
           location.demographics[gender].each_with_index do |group_population, age|
             group_votes = votes.where(users: { location: location, gender: gender, age: age })
             if group_votes.count > 0
-              votes_percentage = Float(group_votes.count.to_f / votes.count.to_f)
-              population_percentage = Float(group_population.to_f / population.to_f)
-              coefficient = Float(votes_percentage / population_percentage)
+              votes_percentage = group_votes.count.to_f / votes.count.to_f
+              population_percentage = group_population.to_f / population.to_f
+              coefficient = votes_percentage / population_percentage
               result = votes_percentage * coefficient
               puts "#{location.name}/#{gender}/#{User.ages.key(age)}: #{votes_percentage}/#{population_percentage}/#{coefficient}/#{result}"
               
@@ -30,6 +31,35 @@ namespace :voting do
               end
             end
           end
+        end
+
+        location_votes = votes.where(users: { location: location, gender: nil, age: nil })
+        if location_votes.count > 0
+          votes_percentage = location_votes.count.to_f / votes.count.to_f
+          population_percentage = location.population.to_f / population.to_f
+          coefficient = votes_percentage / population_percentage
+          result = votes_percentage * coefficient
+          puts "#{location.name}/nil/nil: #{votes_percentage}/#{population_percentage}/#{coefficient}/#{result}"
+          
+          candidates.each do |candidate|
+            candidate_votes = location_votes.where(choice: candidate)
+            candidate_result = candidate_votes.count * result / location_votes.count
+            results[candidate.id] += candidate_result
+            puts "#{ballot.name}/#{candidate.name}/#{candidate_result}"
+          end
+        end
+
+      end
+
+      spare_votes = votes.where(users: { location: nil, gender: nil, age: nil })
+      if spare_votes.count > 0
+        votes_percentage = spare_votes.count.to_f / votes.count.to_f
+
+        candidates.each do |candidate|
+          candidate_votes = spare_votes.where(choice: candidate)
+          candidate_result = candidate_votes.count * votes_percentage / spare_votes.count
+          results[candidate.id] += candidate_result
+          puts "#{ballot.name}/#{candidate.name}/#{candidate_result}"
         end
       end
 
