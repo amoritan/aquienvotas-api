@@ -1,14 +1,26 @@
 class BallotsController < ApplicationController
-  before_action :authenticate_user, only: [:vote]
+  before_action :authenticate_user, only: [:vote, :results]
 
   def index
-    @ballot = Ballot.where(province: nil).order(:created_at).last
+    @ballot = Ballot.where(status: :active).where(province: nil).order(:created_at).last
+
+    render json: @ballot, include: ['candidates', 'candidates.party']
+  end
+
+  def show
+    @ballot = Ballot.find(params[:id])
+
+    authorize @ballot
+
     render json: @ballot, include: ['candidates', 'candidates.party']
   end
 
   def vote
     @ballot = Ballot.find(params[:id])
-    @candidate = Candidate.find(params[:candidate_id])
+
+    authorize @ballot
+
+    @candidate = @ballot.candidates.find(params[:candidate_id])
 
     @vote = @ballot.votes.find_or_create_by(user: current_user)
     @vote.update_attributes(choice: @candidate)

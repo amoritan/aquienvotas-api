@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :ballots, only: [:index] do
+  resources :ballots, only: [:index, :show] do
     post 'vote', on: :member
   end
 
