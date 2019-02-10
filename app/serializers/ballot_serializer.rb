@@ -8,7 +8,17 @@ class BallotSerializer < ActiveModel::Serializer
   end
 
   def candidates_with_results
-    object.candidates.map { |candidate| candidate.result = object.results[candidate.id] ; CandidateSerializer.new(candidate) }.sort_by { |candidate| candidate.object[:result] }
+    object.parties.joins(:candidates).map { |party|
+      party.result = 0.to_f
+      party.candidates = object.candidates.where(party: party).map { |candidate|
+        candidate.result = object.results[candidate.id]
+        party.result += object.results[candidate.id]
+        candidate
+      }
+      party.candidates.sort_by { |candidate| candidate.result }
+      PartySerializer.new(party)
+    }.sort_by { |party| party.object[:result] }
+
   end
 
   def candidates

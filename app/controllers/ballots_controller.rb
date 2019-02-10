@@ -4,7 +4,12 @@ class BallotsController < ApplicationController
   def index
     @ballot = Ballot.where(status: :active).where(province: nil).order(:created_at).last
 
-    render json: @ballot, include: ['candidates', 'candidates.party']
+    if current_user
+      render json: @ballot
+    else
+      render json: @ballot, include: ['candidates', 'candidates.party']
+    end
+    
   end
 
   def show

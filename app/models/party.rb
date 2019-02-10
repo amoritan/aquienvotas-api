@@ -3,4 +3,6 @@ class Party < ApplicationRecord
 
   has_many :candidates
   has_many :ballots, through: :candidates
+
+  attr_accessor :result
 end
