@@ -6,4 +6,8 @@ class UserPolicy < ApplicationPolicy
   def demographics?
     user && !user.gender.nil? && !user.age.nil?
   end
+
+  def locations?
+    user && !user.location.nil?
+  end
 end

@@ -24,6 +24,17 @@ class UsersController < ApplicationController
     render json: @response
   end
 
+  def locations
+    @users = User.all
+    authorize @users
+
+    @response = Location.all.map { |location|
+      { location.name => (@users.where(location: location).count.to_f * 100 / @users.count.to_f).round(2) }
+    }
+
+    render json: @response
+  end
+
   private
     def user_params
       params.require(:user).permit(:location_id, :gender, :age)
