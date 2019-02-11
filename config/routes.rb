@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post 'authentication/authenticate'
   get 'authentication/fetch'
 
-  resources :users, only: [:update]
+  resources :users, only: [:update] do
+    get 'demographics', on: :collection
+  end
 
   resources :provinces, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
