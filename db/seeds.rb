@@ -49,6 +49,7 @@ candidateB = Candidate.create(name: 'BBB', description: 'BBB for the Green Party
 candidateC = Candidate.create(name: 'CCC', description: 'CCC for the Blue Party', party: blueParty)
 
 ballotDemo = Ballot.create(name: 'Ballot Demo', expires_at: Time.now + 1.years, candidates: [candidateA, candidateB, candidateC])
+localBallotDemo = Ballot.create(name: 'Local Ballot Demo', expires_at: Time.now + 1.years, candidates: [candidateA, candidateB], province: Province.find_by(code: 'AR-B'))
 
 # pollDemo = Poll.create(name: 'Poll Demo', expires_at: Time.now + 1.years)
 

@@ -1,7 +1,7 @@
 class BallotsController < ApplicationController
-  before_action :authenticate_user, only: [:vote, :results]
+  before_action :authenticate_user, only: [:local, :vote, :results]
 
-  def index
+  def national
     @ballot = Ballot.where(status: :active).where(province: nil).order(:created_at).last
 
     if current_user
@@ -10,6 +10,12 @@ class BallotsController < ApplicationController
       render json: @ballot, include: ['candidates', 'candidates.party']
     end
     
+  end
+
+  def local
+    @ballot = current_user.province.ballots.where(status: :active).order(:created_at).last
+
+    render json: @ballot, include: ['candidates', 'candidates.party']
   end
 
   def show

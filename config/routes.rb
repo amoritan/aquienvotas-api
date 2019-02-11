@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :ballots, only: [:index, :show] do
+  resources :ballots, only: [:show] do
+    get 'national', on: :collection
+    get 'local', on: :collection
     post 'vote', on: :member
   end
 
