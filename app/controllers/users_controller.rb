@@ -28,9 +28,16 @@ class UsersController < ApplicationController
     @users = User.all
     authorize @users
 
-    @response = Location.all.map { |location|
-      { location.name => (@users.where(location: location).count.to_f * 100 / @users.count.to_f).round(2) }
-    }
+    @response = {}
+
+    Province.joins(:locations).each do |province|
+      province.locations.each_with_index { |location, index|
+        @response[province.locations.count > 1 ? "#{province.code}-#{index + 1}" : province.code] = {
+          :name => location.name,
+          :total => (@users.where(location: location).count.to_f * 100 / @users.count.to_f).round(2)
+        }
+      }
+    end
 
     render json: @response
   end
