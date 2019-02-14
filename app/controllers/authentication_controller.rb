@@ -11,7 +11,7 @@ class AuthenticationController < ApplicationController
 
       knock = Knock::AuthToken.new payload: { sub: @user.id }
       
-      render json: { token: knock.token, user: @user }, :status => 201
+      render json: { token: knock.token, user: UserSerializer.new(@user) }, :status => 201
     else
       puts response
       render json: response, :status => 401

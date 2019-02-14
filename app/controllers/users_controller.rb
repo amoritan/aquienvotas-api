@@ -15,10 +15,17 @@ class UsersController < ApplicationController
     authorize @users
 
     @response = User.ages.keys.map { |age|
-      { age => { 
+      {
+        :code => age,
         :total => (@users.where(age: age).count.to_f * 100 / @users.count.to_f).round(2),
-        :genders => User.genders.keys.map { |gender| { gender => (@users.where(age: age).where(gender: gender).count.to_f * 100 / @users.where(age: age).count.to_f).round(2) } }
-      } }
+        :genders => User.genders.keys.map { |gender|
+          {
+            :code => gender,
+            :group => (@users.where(age: age).where(gender: gender).count.to_f * 100 / @users.where(age: age).count.to_f).round(2),
+            :total => (@users.where(age: age).where(gender: gender).count.to_f * 100 / @users.count.to_f).round(2)
+          }
+        }
+      }
     }
 
     render json: @response
