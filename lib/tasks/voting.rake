@@ -27,7 +27,7 @@ namespace :voting do
             if group_votes.count > 0
               votes_percentage = group_votes.count.to_f / votes.count.to_f
               population_percentage = group_population.to_f / population.to_f
-              coefficient = votes_percentage / population_percentage
+              coefficient = population_percentage / votes_percentage
               result = votes_percentage * coefficient
 
               logger.add(coefficient > 2 || coefficient < -2 ? Logger::WARN : Logger::INFO, "Ballot #{ballot.name} @ #{location.name}/#{gender}/#{User.ages.key(age)}: Obtained #{votes_percentage} / Expected #{population_percentage} / Coefficient #{coefficient} / Result #{result}")
