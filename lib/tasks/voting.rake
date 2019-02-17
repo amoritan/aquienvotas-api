@@ -6,7 +6,6 @@ namespace :voting do
     logger = Logger.new("log/counting_ballots_#{DateTime.now.to_i.to_s}.log")
 
     Ballot.where(status: :active).each do |ballot|
-    # ballot = Ballot.find("78f2b50a-76d4-40ee-94ef-a02ae2f696f2")
       puts "Counting votes for #{ballot.name}"
 
       votes = ballot.votes.joins(:user)

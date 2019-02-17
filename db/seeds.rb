@@ -3,8 +3,8 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   Character.create(name: "Luke", movie: movies.first)
 
 provinces = [
   { name: "Ciudad Autónoma de Buenos Aires", code: "AR-C", locations: [ { name: "Ciudad Autónoma de Buenos Aires", demographics: { female: [ 186484, 426370, 392963, 220558, 405546 ], male: [ 192397, 429456, 384609, 201829, 272072 ] } } ] },
@@ -40,23 +40,25 @@ provinces.each do |province|
   end
 end
 
-partyA = Party.create(name: 'Oficialismo', color: 'feb600')
-partyB = Party.create(name: 'Peronismo Kirchnerista', color: '50ade6')
-partyC = Party.create(name: 'Peronismo Alternativo', color: '004991')
-partyD = Party.create(name: 'Izquierda', color: 'b1292a')
-partyE = Party.create(name: 'Otros', color: 'bebebe')
+partyA = Party.create(name: "Cambiemos", color: "feb600")
+partyB = Party.create(name: "Peronismo Kirchnerista", color: "50ade6")
+partyC = Party.create(name: "Peronismo Alternativo", color: "004991")
+partyD = Party.create(name: "Izquierda", color: "b1292a")
+partyE = Party.create(name: "Otros", color: "505050")
 
-candidateA = Candidate.create(name: 'Candidato/a por Cambiemos', description: 'Oficialismo', party: partyA)
-candidateB = Candidate.create(name: 'Candidato/a por el Kirchnerismo', description: 'Peronismo Kirchnerista', party: partyB)
-candidateC = Candidate.create(name: 'Candidato/a por el Peronismo', description: 'Peronismo Alternativo', party: partyC)
-candidateD = Candidate.create(name: 'Candidato/a por la Izquierda', description: 'Izquierda', party: partyD)
-candidateE = Candidate.create(name: 'Candidato/a por otros espácios', description: 'Otros', party: partyE)
-candidateE = Candidate.create(name: 'Voto en Blanco / Anulado', description: 'Otros', party: partyE, color: '505050')
+candidateA = Candidate.create(name: "Candidato/a", description: "Cambiemos", party: partyA)
+candidateB = Candidate.create(name: "Candidato/a", description: "Peronismo Kirchnerista", party: partyB)
+candidateC = Candidate.create(name: "Candidato/a", description: "Peronismo Alternativo", party: partyC)
+candidateD = Candidate.create(name: "Candidato/a", description: "Izquierda", party: partyD)
+candidateE = Candidate.create(name: "Candidato/a", description: "Otros", party: partyE)
+candidateE = Candidate.create(name: "Voto en Blanco", description: "Otros", party: partyE, color: "bebebe")
 
-ballotA = Ballot.create(name: 'Elección nacional (Espácios políticos)', expires_at: Time.now + 6.months, candidates: Candidate.all)
-ballotB = Ballot.create(name: 'Provincia de Buenos Aires (Espácios políticos)', expires_at: Time.now + 6.months, candidates: Candidate.all, province: Province.find_by(code: 'AR-B'))
+candidateE.avatar.attach(io: File.open("public/blank.png"), filename: "blank.png")
 
-# pollDemo = Poll.create(name: 'Poll Demo', expires_at: Time.now + 1.years)
+ballotA = Ballot.create(name: "Elección nacional (Espácios políticos)", expires_at: Time.now + 6.months, candidates: Candidate.all)
+ballotB = Ballot.create(name: "Provincia de Buenos Aires (Espácios políticos)", expires_at: Time.now + 6.months, candidates: Candidate.all, province: Province.find_by(code: "AR-B"))
 
-# PollOption.create(name: 'Black', description: 'Black Color', color: '000000', poll: pollDemo)
-# PollOption.create(name: 'White', description: 'White Color', color: 'ffffff', poll: pollDemo)
+# pollDemo = Poll.create(name: "Poll Demo", expires_at: Time.now + 1.years)
+
+# PollOption.create(name: "Black", description: "Black Color", color: "000000", poll: pollDemo)
+# PollOption.create(name: "White", description: "White Color", color: "ffffff", poll: pollDemo)
