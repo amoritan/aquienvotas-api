@@ -46,17 +46,17 @@ partyC = Party.create(name: "Peronismo Alternativo", color: "004991")
 partyD = Party.create(name: "Izquierda", color: "b1292a")
 partyE = Party.create(name: "Otros", color: "505050")
 
-candidateA = Candidate.create(name: "Candidato/a", description: "Cambiemos", party: partyA)
-candidateB = Candidate.create(name: "Candidato/a", description: "Peronismo Kirchnerista", party: partyB)
-candidateC = Candidate.create(name: "Candidato/a", description: "Peronismo Alternativo", party: partyC)
-candidateD = Candidate.create(name: "Candidato/a", description: "Izquierda", party: partyD)
-candidateE = Candidate.create(name: "Candidato/a", description: "Otros", party: partyE)
+candidateA = Candidate.create(name: "Espacio Político", description: "Cambiemos", party: partyA)
+candidateB = Candidate.create(name: "Espacio Político", description: "Peronismo Kirchnerista", party: partyB)
+candidateC = Candidate.create(name: "Espacio Político", description: "Peronismo Alternativo", party: partyC)
+candidateD = Candidate.create(name: "Espacio Político", description: "Izquierda", party: partyD)
+candidateE = Candidate.create(name: "Espacio Político", description: "Otros", party: partyE)
 candidateE = Candidate.create(name: "Voto en Blanco", description: "Otros", party: partyE, color: "bebebe")
 
 candidateE.avatar.attach(io: File.open("public/blank.png"), filename: "blank.png")
 
-ballotA = Ballot.create(name: "Elección nacional (Espácios políticos)", expires_at: Time.now + 6.months, candidates: Candidate.all)
-ballotB = Ballot.create(name: "Provincia de Buenos Aires (Espácios políticos)", expires_at: Time.now + 6.months, candidates: Candidate.all, province: Province.find_by(code: "AR-B"))
+ballotA = Ballot.create(name: "Elección nacional", expires_at: Time.now + 6.months, candidates: Candidate.all)
+ballotB = Ballot.create(name: "Provincia de Buenos Aires", expires_at: Time.now + 6.months, candidates: Candidate.all, province: Province.find_by(code: "AR-B"))
 
 # pollDemo = Poll.create(name: "Poll Demo", expires_at: Time.now + 1.years)
 
