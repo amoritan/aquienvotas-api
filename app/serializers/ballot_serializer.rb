@@ -9,15 +9,16 @@ class BallotSerializer < ActiveModel::Serializer
 
   def candidates_with_results
     object.parties.joins(:candidates).uniq.map { |party|
-      party.result = 0.to_f
+      party.result = 0
       party.candidates = object.candidates.where(party: party).map { |candidate|
         candidate.result = object.results[candidate.id]
         party.result += object.results[candidate.id]
         candidate
       }
       party.candidates.sort_by { |candidate| candidate.result }
+      party.result = party.result.round(2)
       PartySerializer.new(party)
-    }.sort_by { |party| party.object[:result] }
+    }.sort_by { |party| party.object.result }.reverse
 
   end
 
