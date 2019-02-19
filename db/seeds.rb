@@ -40,23 +40,29 @@ provinces.each do |province|
   end
 end
 
-partyA = Party.create(name: "Cambiemos", color: "feb600")
-partyB = Party.create(name: "Peronismo Kirchnerista", color: "50ade6")
-partyC = Party.create(name: "Peronismo Alternativo", color: "004991")
-partyD = Party.create(name: "Izquierda", color: "b1292a")
-partyE = Party.create(name: "Otros", color: "505050")
+partyA = Party.create(name: "Espacio Político", color: "505050")
+partyB = Party.create(name: "Otros", color: "bebebe")
 
-candidateA = Candidate.create(name: "Espacio Político", description: "Cambiemos", party: partyA)
-candidateB = Candidate.create(name: "Espacio Político", description: "Peronismo Kirchnerista", party: partyB)
-candidateC = Candidate.create(name: "Espacio Político", description: "Peronismo Alternativo", party: partyC)
-candidateD = Candidate.create(name: "Espacio Político", description: "Izquierda", party: partyD)
-candidateE = Candidate.create(name: "Espacio Político", description: "Otros", party: partyE)
-candidateE = Candidate.create(name: "Voto en Blanco", description: "Otros", party: partyE, color: "bebebe")
+candidateA = Candidate.create(name: "Cambiemos", color: "feb600", party: partyA)
+candidateB = Candidate.create(name: "Peronismo Kirchnerista", color: "50ade6", party: partyA)
+candidateC = Candidate.create(name: "Peronismo Alternativo", color: "004991", party: partyA)
+candidateD = Candidate.create(name: "Izquierda", color: "b1292a", party: partyA)
+candidateE = Candidate.create(name: "Liberalismo", color: "77b255", party: partyA)
+candidateF = Candidate.create(name: "Otros", party: partyA)
+candidateG = Candidate.create(name: "Voto en Blanco", party: partyB)
 
-candidateE.avatar.attach(io: File.open("public/blank.png"), filename: "blank.png")
+candidateG.avatar.attach(io: File.open("public/blank.png"), filename: "blank.png")
 
 ballotA = Ballot.create(name: "Elección nacional", expires_at: Time.now + 6.months, candidates: Candidate.all)
 ballotB = Ballot.create(name: "Provincia de Buenos Aires", expires_at: Time.now + 6.months, candidates: Candidate.all, province: Province.find_by(code: "AR-B"))
+
+# Rake::Task["voting:feed_ballots"].invoke(300, ballotA.id, candidateA.id)
+# Rake::Task["voting:feed_ballots"].invoke(250, ballotA.id, candidateB.id)
+# Rake::Task["voting:feed_ballots"].invoke(200, ballotA.id, candidateC.id)
+# Rake::Task["voting:feed_ballots"].invoke(50, ballotA.id, candidateD.id)
+# Rake::Task["voting:feed_ballots"].invoke(75, ballotA.id, candidateE.id)
+# Rake::Task["voting:feed_ballots"].invoke(100, ballotA.id, candidateE.id)
+# Rake::Task["voting:feed_ballots"].invoke(25, ballotA.id, candidateG.id)
 
 # pollDemo = Poll.create(name: "Poll Demo", expires_at: Time.now + 1.years)
 
