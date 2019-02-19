@@ -76,8 +76,11 @@ namespace :voting do
 
       puts "Saving results for #{ballot.name}"
 
-      results.keys.each do |result_key|
-        results[result_key] = (results[result_key] * 100).round(2)
+      results_total = results.keys.inject(0){ |sum, candidate_id| sum + results[candidate_id] }
+      if (results_total > 0)
+        results.keys.each do |result_key|
+          results[result_key] = ((results[result_key] / results_total) * 100).round(2)
+        end
       end
 
       ballot.update_attributes(results: results)
