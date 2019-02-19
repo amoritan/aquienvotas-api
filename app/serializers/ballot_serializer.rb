@@ -15,11 +15,9 @@ class BallotSerializer < ActiveModel::Serializer
         party.result += object.results[candidate.id]
         candidate
       }
-      party.candidates.sort_by { |candidate| candidate.result }
       party.result = party.result.round(2)
       PartySerializer.new(party)
     }.sort_by { |party| party.object.result }.reverse
-
   end
 
   def candidates
