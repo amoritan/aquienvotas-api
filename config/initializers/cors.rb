@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'macbook-pro-de-andres.local:5757'
+    origins ENV["CLIENT"]
 
     resource '*',
       headers: :any,
