@@ -1,0 +1,273 @@
+-
+  code: 0
+  name: "Presidente"
+  expiration: "2019-06-22"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+-
+  code: 1
+  name: "Gobernador/a de Salta"
+  province: "AR-A"
+  expiration: "2019-06-22"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 7
+    - 8
+-
+  code: 2
+  name: "Gobernador/a de Provincia de Buenos Aires"
+  province: "AR-B"
+  expiration: "2019-06-22"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+-
+  code: 3
+  name: "Jefe/a de Gobierno CABA"
+  province: "AR-C"
+  expiration: "2019-06-22"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 20
+-
+  code: 4
+  name: "Gobernador/a de San Luis"
+  province: "AR-D"
+  expiration: "2019-03-02"
+  candidates:
+    - 1
+    - 2
+    - 19
+    - 5
+-
+  code: 5
+  name: "Gobernador/a de Entre Ríos"
+  province: "AR-E"
+  expiration: "2019-04-14"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 5
+-  
+  code: 6
+  name: "Gobernador/a de La Rioja"
+  province: "AR-F"
+  expiration: "2019-03-23"
+  candidates:
+    - 1
+    - 2
+    - 71
+    - 5
+    - 21
+-
+  code: 7
+  name: "Gobernador/a de Chaco"
+  province: "AR-H"
+  expiration: "2019-06-22"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+-  
+  code: 8
+  name: "Gobernador/a de San Juan"
+  province: "AR-J"
+  expiration: "2019-03-31"
+  candidates:
+    - 55
+    - 56
+    - 57
+    - 58
+    - 59
+    - 60
+    - 61
+-  
+  code: 9
+  name: "Gobernador/a de Catamarca"
+  province: "AR-K"
+  expiration: "2019-06-22"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+-  
+  code: 10
+  name: "Gobernador/a de La Pampa"
+  province: "AR-L"
+  expiration: "2019-05-19"
+  candidates:
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+-  
+  code: 11
+  name: "Gobernador/a de Mendoza"
+  province: "AR-M"
+  expiration: "2019-06-09"
+  candidates:
+    - 1
+    - 2
+    - 71
+    - 5
+    - 12
+-  
+  code: 12
+  name: "Gobernador/a de Misiones"
+  province: "AR-N"
+  expiration: "2019-04-30"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 5
+    - 15
+    - 16
+    - 17
+-  
+  code: 13
+  name: "Gobernador/a de Formosa"
+  province: "AR-P"
+  expiration: "2019-06-22"
+  candidates:
+    - 1
+    - 2
+    - 71
+    - 5
+    - 11
+-  
+  code: 14
+  name: "Gobernador/a de Neuquén"
+  province: "AR-Q"
+  expiration: "2019-03-10"
+  candidates:
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    - 35
+    - 36
+    - 37
+    - 38
+-   
+  code: 15
+  name: "Gobernador/a de Río Negro"
+  province: "AR-R"
+  expiration: "2019-04-07"
+  candidates:
+    - 39
+    - 40
+    - 41
+    - 42
+    - 43
+    - 44
+    - 45
+-  
+  code: 16
+  name: "Gobernador/a de Santa Fe"
+  province: "AR-S"
+  expiration: "2019-04-28"
+  candidates:
+    - 46
+    - 47
+    - 48
+    - 49
+    - 50
+-  
+  code: 17
+  name: "Gobernador/a de Tucumán"
+  province: "AR-T"
+  expiration: "2019-04-09"
+  candidates:
+    - 1
+    - 2
+    - 71
+    - 5
+    - 18
+-  
+  code: 18
+  name: "Gobernador/a de Chubut"
+  province: "AR-U"
+  expiration: "2019-04-07"
+  candidates:
+    - 62
+    - 63
+    - 64
+    - 65
+    - 66
+    - 67
+    - 68
+    - 69
+    - 70
+-  
+  code: 19
+  name: "Gobernador/a de Tierra del Fuego"
+  province: "AR-V"
+  expiration: "2019-06-22"
+  candidates:
+    - 1
+    - 2
+    - 71
+    - 5
+    - 13
+    - 14
+-  
+  code: 20
+  name: "Gobernador/a de Córdoba"
+  province: "AR-X"
+  expiration: "2019-03-23"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 5
+    - 10
+-   
+  code: 21
+  name: "Gobernador/a de Jujuy"
+  province: "AR-Y"
+  expiration: "2019-06-22"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+-  
+  code: Gobernador/a de 21
+  name: "Santa Cruz"
+  province: "AR-Z"
+  expiration: "2019-06-22"
+  candidates:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5 

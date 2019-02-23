@@ -1,0 +1,305 @@
+-
+  code: 1
+  name: "Otros"
+  party: 0
+-
+  code: 2
+  name: "Cambiemos"
+  color: "feb600"
+  party: 0
+-
+  code: 3
+  name: "Peronismo Kirchnerista"
+  color: "50ade6"
+  party: 0
+-
+  code: 4
+  name: "Peronismo Alternativo"
+  color: "004991"
+  party: 0
+-
+  code: 5
+  name: "Izquierda"
+  color: "b1292a"
+  party: 0
+-
+  code: 6  
+  name: "Liberalismo"
+  color: "77b255"
+  party: 0
+-
+  code: 7
+  name: "Salta Somos Todos"
+  color: "F3EA47"
+  party: 0  
+-
+  code: 8
+  name: "Frente Liberación Popular"
+  color: "0D9546"
+  party: 0
+-
+  code: 9
+  name: "Chubut Somos Todos"
+  color: "008B6C"
+  party: 0
+-
+  code: 10
+  name: "Unión Por Córdoba"
+  color: "DA062E"
+  party: 0
+-
+  code: 11
+  name: "Principios y Convicción"
+  color: "171A46"
+  party: 0
+-
+  code: 12
+  name: "Partido Intransigente"
+  color: "FF0003"
+  party: 0
+-
+  code: 13
+  name: "FORJA"
+  color: "1C2C5F"
+  party: 0
+-
+  code: 14
+  name: "Partido Federal Fueguino"
+  color: "5E9A60"
+  party: 0
+-
+  code: 15
+  name: "Frente Renovador para la Concordia Social"
+  color: "EA8116"
+  party: 0
+-
+  code: 16
+  name: "Partido Agrario"
+  color: "229D23"
+  party: 0
+-
+  code: 17
+  name: "Unión Popular"
+  color: "29166F"
+  party: 0
+-
+  code: 18
+  name: "Fuerza Republicana"
+  color: "0174A3"
+  party: 0
+-
+  code: 19
+  name: "Frente Unidad Justicialista San Luis"
+  color: "6DB8E0"
+  party: 0
+-
+  code: 20
+  name: "Evolución"
+  color: "FF198A"
+  party: 0
+-
+  code: 21
+  name: "Alternativa Popular Riojana"
+  color: "04962B"
+  party: 0
+-
+  code: 22
+  name: "Daniel Kroneberger"
+  party: 29
+-
+  code: 23
+  name: "Sergio Ziliotto"
+  party: 30
+-
+  code: 24
+  name: "Daniel Robledo"
+  party: 1
+-
+  code: 25
+  name: "Rubén Ojuez"
+  party: 2
+-
+  code: 26
+  name: "Luis Solana"
+  party: 3
+-
+  code: 27
+  name: "Juan Carlos Tierno"
+  party: 4
+-
+  code: 28
+  name: "Jonatan Gomez"
+  party: 5
+-
+  code: 29
+  name: "Gladys Flores"
+  party: 6
+-
+  code: 30
+  name: "Omar Gutiérrez"
+  party: 7
+-
+  code: 31
+  name: "Horacio Pechi Quiroga"
+  party: 29
+-
+  code: 32
+  name: "Ramón Rioseco"
+  party: 31
+-
+  code: 33
+  name: "Raúl Godoy"
+  party: 8
+-
+  code: 34
+  name: "Jorge Sobisch"
+  party: 9
+-
+  code: 35
+  name: "Mercedes Lamarca"
+  party: 10
+-
+  code: 36
+  name: "Priscila Otton"
+  party: 5
+-
+  code: 37
+  name: "Alejandro Vidal"
+  party: 11
+-
+  code: 38
+  name: "Sergio Rodríguez"
+  party: 12
+-
+  code: 39
+  name: "Alberto Weretilneck"
+  party: 13
+-
+  code: 40
+  name: "Lorena Matzen"
+  party: 29
+-
+  code: 41
+  name: "Martín Soria"
+  party: 14
+-
+  code: 42
+  name: "Norma Dardik"
+  party: 15
+-
+  code: 43
+  name: "Rubén Yahuar"
+  party: 16
+-
+  code: 44
+  name: "Jorge Paulic"
+  party: 17
+-
+  code: 45
+  name: "Aurelio Vázquez"
+  party: 18
+-
+  code: 46
+  name: "José Corral"
+  party: 29
+-
+  code: 47
+  name: "Antonio Bonfatti"
+  party: 19
+-
+  code: 48
+  name: "Omar Perotti"
+  party: 30
+-
+  code: 49
+  name: "María Eugenia Bielsa"
+  party: 30
+-
+  code: 50
+  name: "Octavio Crivaro"
+  party: 8
+-
+  code: 51
+  name: "Gustavo Bordet"
+  party: 20
+-
+  code: 52
+  name: "Gustavo Hein"
+  party: 29
+-
+  code: 53
+  name: "Atilio Benedetti"
+  party: 29
+-
+  code: 54
+  name: "Luis Meiners"
+  party: 17
+-
+  code: 55
+  name: "Marcelo Orrego"
+  party: 32
+-
+  code: 56
+  name: "Martín Turcuman"
+  party: 21
+-
+  code: 57
+  name: "Gustavo Fernández"
+  party: 22
+-
+  code: 58
+  name: "Sergio Uñac"
+  party: 23
+-
+  code: 59
+  name: "Nancy Avelín"
+  party: 33
+-
+  code: 60
+  name: "Mary Garrido"
+  party: 5
+-
+  code: 61
+  name: "Alberto Agüero"
+  party: 24
+-
+  code: 62
+  name: "Mariano Arcioni"
+  party: 25
+-
+  code: 63
+  name: "Gustavo Menna"
+  party: 29
+-
+  code: 64
+  name: "Carlos Linares"
+  party: 26
+-
+  code: 65
+  name: "Gustavo Mac Karthy"
+  party: 26
+-
+  code: 66
+  name: "Omar Burgoa"
+  party: 26
+-
+  code: 67
+  name: "Luis Giussi"
+  party: 27
+-
+  code: 68
+  name: "Maximiliano Masquijo"
+  party: 5
+-
+  code: 69
+  name: "Oscar Petersen"
+  party: 28
+-
+  code: 70
+  name: "Carlos Wohn"
+  party: 34
+-  
+  code: 71
+  name: "Peronismo"
+  color: "50ade6"
+  party: 0
