@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: aquienvotas_production
-  username: aquienvotas
-  password: <%= ENV['AQUIENVOTAS_DATABASE_PASSWORD'] %>
+  database: aquienvotas
+  host: <%= Rails.application.credentials.dig(:rds, :host) %>
+  username: <%= Rails.application.credentials.dig(:rds, :username) %>
+  password: <%= Rails.application.credentials.dig(:rds, :password) %>
