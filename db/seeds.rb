@@ -40,39 +40,39 @@ provinces.each do |province|
   end
 end
 
-partyA = Party.create(name: "Espacio Político", color: "505050")
-partyB = Party.create(name: "Otros", color: "bebebe")
+# partyA = Party.create(name: "Espacio Político", color: "505050")
+# partyB = Party.create(name: "Otros", color: "bebebe")
 
-candidateA = Candidate.create(name: "Cambiemos", color: "feb600", party: partyA)
-candidateB = Candidate.create(name: "Peronismo Kirchnerista", color: "50ade6", party: partyA)
-candidateC = Candidate.create(name: "Peronismo Alternativo", color: "004991", party: partyA)
-candidateD = Candidate.create(name: "Izquierda", color: "b1292a", party: partyA)
-candidateE = Candidate.create(name: "Liberalismo", color: "77b255", party: partyA)
-candidateF = Candidate.create(name: "Otros", party: partyA)
-candidateG = Candidate.create(name: "Voto en Blanco", party: partyB)
+# candidateA = Candidate.create(name: "Cambiemos", color: "feb600", party: partyA)
+# candidateB = Candidate.create(name: "Peronismo Kirchnerista", color: "50ade6", party: partyA)
+# candidateC = Candidate.create(name: "Peronismo Alternativo", color: "004991", party: partyA)
+# candidateD = Candidate.create(name: "Izquierda", color: "b1292a", party: partyA)
+# candidateE = Candidate.create(name: "Liberalismo", color: "77b255", party: partyA)
+# candidateF = Candidate.create(name: "Otros", party: partyA)
+# candidateG = Candidate.create(name: "Voto en Blanco", party: partyB)
 
-candidateG.avatar.attach(io: File.open("public/blank.png"), filename: "blank.png")
+# candidateG.avatar.attach(io: File.open("public/blank.png"), filename: "blank.png")
 
-ballotA = Ballot.create(name: "Nacional", expires_at: Time.now + 6.months, candidates: Candidate.all)
-ballotB = Ballot.create(name: "Provincia de Buenos Aires", expires_at: Time.now + 6.months, candidates: Candidate.all, province: Province.find_by(code: "AR-B"))
+# ballotA = Ballot.create(name: "Nacional", expires_at: Time.now + 6.months, candidates: Candidate.all)
+# ballotB = Ballot.create(name: "Provincia de Buenos Aires", expires_at: Time.now + 6.months, candidates: Candidate.all, province: Province.find_by(code: "AR-B"))
 
-Rake::Task["voting:feed_ballots"].invoke(300, ballotA.id, candidateA.id)
-Rake::Task["voting:feed_ballots"].reenable
-Rake::Task["voting:feed_ballots"].invoke(250, ballotA.id, candidateB.id)
-Rake::Task["voting:feed_ballots"].reenable
-Rake::Task["voting:feed_ballots"].invoke(200, ballotA.id, candidateC.id)
-Rake::Task["voting:feed_ballots"].reenable
-Rake::Task["voting:feed_ballots"].invoke(50, ballotA.id, candidateD.id)
-Rake::Task["voting:feed_ballots"].reenable
-Rake::Task["voting:feed_ballots"].invoke(75, ballotA.id, candidateE.id)
-Rake::Task["voting:feed_ballots"].reenable
-Rake::Task["voting:feed_ballots"].invoke(100, ballotA.id, candidateE.id)
-Rake::Task["voting:feed_ballots"].reenable
-Rake::Task["voting:feed_ballots"].invoke(25, ballotA.id, candidateG.id)
-Rake::Task["voting:feed_ballots"].reenable
+# Rake::Task["voting:feed_ballots"].invoke(300, ballotA.id, candidateA.id)
+# Rake::Task["voting:feed_ballots"].reenable
+# Rake::Task["voting:feed_ballots"].invoke(250, ballotA.id, candidateB.id)
+# Rake::Task["voting:feed_ballots"].reenable
+# Rake::Task["voting:feed_ballots"].invoke(200, ballotA.id, candidateC.id)
+# Rake::Task["voting:feed_ballots"].reenable
+# Rake::Task["voting:feed_ballots"].invoke(50, ballotA.id, candidateD.id)
+# Rake::Task["voting:feed_ballots"].reenable
+# Rake::Task["voting:feed_ballots"].invoke(75, ballotA.id, candidateE.id)
+# Rake::Task["voting:feed_ballots"].reenable
+# Rake::Task["voting:feed_ballots"].invoke(100, ballotA.id, candidateE.id)
+# Rake::Task["voting:feed_ballots"].reenable
+# Rake::Task["voting:feed_ballots"].invoke(25, ballotA.id, candidateG.id)
+# Rake::Task["voting:feed_ballots"].reenable
 
-pollA = Poll.create(name: "¿Qué opinas de la ley de Interrupción Voluntaria del Embarazo?", expires_at: Time.now + 1.years)
+# pollA = Poll.create(name: "¿Qué opinas de la ley de Interrupción Voluntaria del Embarazo?", expires_at: Time.now + 1.years)
 
-PollOption.create(name: "¡Estoy a favor!", color: "00b94e", poll: pollA)
-PollOption.create(name: "¡Estoy en contra!", color: "00a6d5", poll: pollA)
+# PollOption.create(name: "¡Estoy a favor!", color: "00b94e", poll: pollA)
+# PollOption.create(name: "¡Estoy en contra!", color: "00a6d5", poll: pollA)
 # PollOption.create(name: "White", description: "White Color", color: "ffffff", poll: pollDemo)
