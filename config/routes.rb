@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     post "vote", on: :member
   end
 
+  resources :polls, only: [:index, :show] do
+    post "vote", on: :member
+  end
+
   post "authentication/authenticate"
   get "authentication/fetch"
 

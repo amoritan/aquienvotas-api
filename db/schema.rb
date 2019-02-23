@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2019_02_15_115556) do
     t.string "name"
     t.integer "status", limit: 2, default: 1
     t.datetime "expires_at"
+    t.jsonb "results", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

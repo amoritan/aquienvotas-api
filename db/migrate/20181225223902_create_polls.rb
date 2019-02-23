@@ -4,6 +4,7 @@ class CreatePolls < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :status, limit: 1, default: 1
       t.datetime :expires_at
+      t.jsonb :results, default: {}
 
       t.timestamps
     end
