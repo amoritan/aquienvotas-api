@@ -1,7 +1,7 @@
-namespace :voting do
+namespace :count do
 
   desc "Count votes for every active ballots"
-  task count_ballots: :environment do
+  task ballots: :environment do
 
     logger = Logger.new("log/counting_ballots_#{DateTime.now.to_i.to_s}.log")
 
@@ -91,34 +91,8 @@ namespace :voting do
 
   end
 
-  desc "Feed placeholder votes for ballot"
-  task :feed_ballots, [:votes, :ballot_id, :candidate_id] => :environment do |task, args|
-
-    ballot = Ballot.find(args.ballot_id)
-    candidate = Candidate.find(args.candidate_id)
-
-    locations = ballot.province.nil? ? Location.all : ballot.province.locations
-    population = locations.inject(0){ |sum, location| sum + location.population }
-
-    locations.each do |location|
-      location.demographics.keys.each do |gender|
-        location.demographics[gender].each_with_index do |group_population, age|
-
-          votes = args.votes.to_f * group_population.to_f / population.to_f
-
-          for i in 1..votes.round(0)
-            user = User.create(location: location, gender: gender, age: age)
-            Vote.create(voting: ballot, choice: candidate, user: user)
-          end
-
-        end
-      end
-    end
-
-  end
-
   desc "Count votes for every active poll"
-  task count_polls: :environment do
+  task polls: :environment do
 
     logger = Logger.new("log/counting_polls_#{DateTime.now.to_i.to_s}.log")
 
