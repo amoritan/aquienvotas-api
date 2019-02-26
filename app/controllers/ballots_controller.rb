@@ -36,6 +36,6 @@ class BallotsController < ApplicationController
     @vote = @ballot.votes.find_or_create_by(user: current_user)
     @vote.update_attributes(choice: @candidate)
 
-    render json: @vote
+    render json: current_user
   end
 end
