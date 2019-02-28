@@ -1,6 +1,6 @@
 class BallotPolicy < ApplicationPolicy
   def show?
-    user && !record.deleted? && (record.province.nil? ? true : record.province == user.province )
+    !record.deleted?
   end
 
   def vote?

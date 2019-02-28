@@ -1,21 +1,16 @@
 class BallotsController < ApplicationController
-  before_action :authenticate_user, only: [:local, :vote, :results]
+  before_action :authenticate_user, only: [:local, :vote]
 
   def national
-    @ballot = Ballot.where(status: :active).where(province: nil).order(:created_at).last
+    @ballot = Ballot.where(status: :active).where(province: nil).where(status: :active).order(:created_at).last
 
-    if current_user
-      render json: @ballot
-    else
-      render json: @ballot, include: ['candidates', 'candidates.party']
-    end
-    
+    render json: @ballot, include: ['candidates', 'candidates.party'], serializer: ballot_serializer
   end
 
   def local
-    @ballot = current_user.province.ballots.where(status: :active).order(:created_at).last
+    @ballot = current_user.province.active_ballot
 
-    render json: @ballot, include: ['candidates', 'candidates.party']
+    render json: @ballot, include: ['candidates', 'candidates.party'], serializer: ballot_serializer
   end
 
   def show
@@ -23,7 +18,7 @@ class BallotsController < ApplicationController
 
     authorize @ballot
 
-    render json: @ballot, include: ['candidates', 'candidates.party']
+    render json: @ballot, include: ['candidates', 'candidates.party'], serializer: ballot_serializer
   end
 
   def vote
@@ -38,4 +33,9 @@ class BallotsController < ApplicationController
 
     render json: current_user
   end
+
+  private
+    def ballot_serializer
+      (current_user && (current_user.votes.exists?(voting: @ballot) || current_user.votes.where(voting_type: "Ballot").includes(:voting).count {|vote| vote.voting.status == "active" } > 1)) ? BallotResultsSerializer : BallotSerializer
+    end
 end
