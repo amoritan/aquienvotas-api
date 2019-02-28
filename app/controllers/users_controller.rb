@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def demographics
-    @users = User.all
+    @users = User.where.not(gender: nil)
     authorize @users
 
     @response = User.ages.keys.map { |age|
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def locations
-    @users = User.all
+    @users = User.where.not(province: nil)
     authorize @users
 
     @response = []
