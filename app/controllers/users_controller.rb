@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def locations
-    @users = User.where.not(province: nil)
+    @users = User.where.not(location: nil)
     authorize @users
 
     @response = []
