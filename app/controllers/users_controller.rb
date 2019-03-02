@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user
+  skip_before_action :authenticate_user, only: [:amount]
 
   def update
     @user = User.find(params[:id])
@@ -48,6 +49,12 @@ class UsersController < ApplicationController
     end
 
     render json: @response
+  end
+
+  def amount
+    @users_count = User.all.count
+
+    render json: { users: @users_count }
   end
 
   private
