@@ -8,7 +8,7 @@ class Candidate < ApplicationRecord
   has_one_attached :avatar
 
   def avatar_url
-    self.avatar.attached? ? Rails.application.routes.url_helpers.url_for(self.avatar.variant(combine_options: {resize: "480x480", gravity: "center", extent: "480x480", background: "rgba(255,255,255,0"})) : nil
+    self.avatar.attached? ? Rails.application.routes.url_helpers.url_for(self.avatar.variant(combine_options: { resize: "480x480>", gravity: "Center", crop: "480x480+0+0" })) : nil
   end
 
   attr_accessor :result
