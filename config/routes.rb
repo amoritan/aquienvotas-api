@@ -23,5 +23,11 @@ Rails.application.routes.draw do
   resources :provinces, only: [:index]
 
   root "status#index"
+
+  namespace :admin do
+    resources :parties, only: [:index, :show, :update, :create]
+    resources :candidates, only: [:index, :show, :update, :create]
+    resources :ballots, only: [:index, :show, :update, :create]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
