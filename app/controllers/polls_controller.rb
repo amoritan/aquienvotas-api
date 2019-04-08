@@ -30,6 +30,6 @@ class PollsController < ApplicationController
     @vote = @poll.votes.find_or_create_by(user: current_user)
     @vote.update_attributes(choice: @poll_option)
 
-    render json: @vote
+    render json: current_user
   end
 end
