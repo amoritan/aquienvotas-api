@@ -21,4 +21,5 @@
 
 every 15.minutes do
   rake "count:ballots"
+  rake "count:polls"
 end
