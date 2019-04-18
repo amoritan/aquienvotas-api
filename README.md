@@ -1,15 +1,20 @@
-# AQuienVotas
+![](https://s3-sa-east-1.amazonaws.com/assets.aquienvotas.com/icon-github.svg)
+
+# AQuienVotas 
+> [Web Application](https://github.com/andresmoritan/aquienvotas#aquienvotas "App de AQuienVotas en GitHub") | Application Programming Interface (API)
+
+![Travis (.com)](https://img.shields.io/travis/com/andresmoritan/aquienvotas-api.svg) ![Website](https://img.shields.io/website/https/api.aquienvotas.com.svg) ![GitHub](https://img.shields.io/github/license/andresmoritan/aquienvotas.svg)
 
 **AQuienVotas** es una plataforma web para generar estadísticas de intención de voto y opinión a través de encuestas transparentes y representativas.
 
 La versión del proyecto publicada en [www.aquienvotas.com](https://www.aquienvotas.com "AQuienVotas") tiene como objetivo representar la opinión de la población de cara a las elecciones ejecutivas del año 2019 en Argentina a través distintas encuestas sobre la intención de voto y la opinión de los visitantes frente temas de debate público en el país. 
 
-Los resultados obtenidos son ponderados y expuestos al usuarios en tiempo real. Apuntamos a colaborar, con datos de calidad, en el debate público mediante el desarrollo de esta herramienta neutral, transparente y accesible.
+Los resultados obtenidos son ponderados y expuestos en tiempo real. Apuntamos a colaborar, con datos de calidad, en el debate público mediante el desarrollo de una herramienta neutral, transparente y accesible.
 
 ### Acerca del equipo
 Somos cuatro argentinos con interés en política, estadística y tecnología. Nuestro objetivo es construir una herramienta neutral y representativa para producir un set de datos público de calidad con valores anónimos de opinión, orientación política y segmentación.
 
-- **[@andresmoritan](https://twitter.com/andresmoritan "Twitter de Andres Moritan")  (Desarrollo)**: Es desarrollador,  creó y mantiene la plataforma; Diseña e implementa la arquitectura y las interfaces.
+- **[@andresmoritan](https://twitter.com/andresmoritan "Twitter de Andres Moritan")  (Desarrollo)**: Es programador, creó y mantiene la plataforma; Diseña e implementa la arquitectura y las interfaces.
 - **[@ineslovisolo](https://twitter.com/ineslovisolo "Twitter de Ines Lovisolo") (Análisis)**: Es politóloga especialista en opinión pública, maneja los análisis políticos y asegura la validez estadística los resultados.
 - **[@andreskloster](https://twitter.com/AndresKloster "Twitter de Andres Kloster") (Difusión)**: Es especialista en posicionamiento web, se encarga de comunicar y difundir el proyecto.
 - **[@lapaulaalcala](https://twitter.com/lapaulaalcala "Twitter de Paula Alcala") (Estrategia)**: Es licenciada en ciencias de la educación, define la experiencia de la aplicación, el contenido y la estrategia del proyecto.
@@ -78,6 +83,4 @@ This program is free software: you can redistribute it and/or modify it under th
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see \<[https://www.gnu.org/licenses/](https://www.gnu.org/licenses/)\>.
-
-![AGPL](https://www.gnu.org/graphics/agplv3-155x51.png)
+You should have received a copy of the GNU Affero General Public License along with this program. If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
