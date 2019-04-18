@@ -1,1 +1,7 @@
 language: ruby
+addons:
+  postgresql: 9.6
+before_script:
+  - psql -c 'create database aquienvotas_test;' -U postgres
+script:
+  - bundle exec rails db:migrate RAILS_ENV=test
