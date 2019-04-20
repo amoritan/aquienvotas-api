@@ -63,39 +63,39 @@ namespace :count do
           end
         end
 
-        puts "    Adding votes without demographics"
+        # puts "    Adding votes without demographics"
 
-        location_votes = votes.where(users: { location: location, gender: [nil, :other], age: nil })
-        if location_votes.count > 0
-          votes_percentage = location_votes.count.to_f / votes.count.to_f
-          population_percentage = location.population.to_f / population.to_f
-          coefficient = population_percentage / votes_percentage
+        # location_votes = votes.where(users: { location: location, gender: [nil, :other], age: nil })
+        # if location_votes.count > 0
+        #   votes_percentage = location_votes.count.to_f / votes.count.to_f
+        #   population_percentage = location.population.to_f / population.to_f
+        #   coefficient = population_percentage / votes_percentage
 
-          logger.add(coefficient > 2 || coefficient < -2 ? Logger::WARN : Logger::INFO, "Ballot #{ballot.name} @ #{location.name}/undefined/undefined}: Obtained #{votes_percentage} / Expected #{population_percentage} / Coefficient #{coefficient}")
+        #   logger.add(coefficient > 2 || coefficient < -2 ? Logger::WARN : Logger::INFO, "Ballot #{ballot.name} @ #{location.name}/undefined/undefined}: Obtained #{votes_percentage} / Expected #{population_percentage} / Coefficient #{coefficient}")
           
-          candidates.each do |candidate|
-            candidate_votes = location_votes.where(choice: candidate)
-            candidate_result = (candidate_votes.count.to_f / votes.count.to_f) * coefficient
-            results[candidate.id] += candidate_result
-          end
-        end
+        #   candidates.each do |candidate|
+        #     candidate_votes = location_votes.where(choice: candidate)
+        #     candidate_result = (candidate_votes.count.to_f / votes.count.to_f) * coefficient
+        #     results[candidate.id] += candidate_result
+        #   end
+        # end
 
       end
 
-      puts "  Adding votes without location"
+      # puts "  Adding votes without location"
 
-      spare_votes = votes.where(users: { location: nil, gender: nil, age: nil })
-      if ballot.province.nil? && spare_votes.count > 0
-        votes_percentage = spare_votes.count.to_f / votes.count.to_f
+      # spare_votes = votes.where(users: { location: nil, gender: nil, age: nil })
+      # if ballot.province.nil? && spare_votes.count > 0
+      #   votes_percentage = spare_votes.count.to_f / votes.count.to_f
 
-        logger.info("Ballot #{ballot.name} @ undefined/undefined/undefined}: Obtained #{votes_percentage} / Expected undefined / Coefficient undefined")
+      #   logger.info("Ballot #{ballot.name} @ undefined/undefined/undefined}: Obtained #{votes_percentage} / Expected undefined / Coefficient undefined")
 
-        candidates.each do |candidate|
-          candidate_votes = spare_votes.where(choice: candidate)
-          candidate_result = candidate_votes.count.to_f / votes.count.to_f
-          results[candidate.id] += candidate_result
-        end
-      end
+      #   candidates.each do |candidate|
+      #     candidate_votes = spare_votes.where(choice: candidate)
+      #     candidate_result = candidate_votes.count.to_f / votes.count.to_f
+      #     results[candidate.id] += candidate_result
+      #   end
+      # end
 
       puts "Saving results for #{ballot.name}"
 
@@ -154,39 +154,39 @@ namespace :count do
           end
         end
 
-        puts "    Adding votes without demographics"
+        # puts "    Adding votes without demographics"
 
-        location_votes = votes.where(users: { location: location, gender: [nil, :other], age: nil })
-        if location_votes.count > 0
-          votes_percentage = location_votes.count.to_f / votes.count.to_f
-          population_percentage = location.population.to_f / population.to_f
-          coefficient = population_percentage / votes_percentage
+        # location_votes = votes.where(users: { location: location, gender: [nil, :other], age: nil })
+        # if location_votes.count > 0
+        #   votes_percentage = location_votes.count.to_f / votes.count.to_f
+        #   population_percentage = location.population.to_f / population.to_f
+        #   coefficient = population_percentage / votes_percentage
 
-          logger.add(coefficient > 2 || coefficient < -2 ? Logger::WARN : Logger::INFO, "Poll #{poll.name} @ #{location.name}/undefined/undefined}: Obtained #{votes_percentage} / Expected #{population_percentage} / Coefficient #{coefficient}")
+        #   logger.add(coefficient > 2 || coefficient < -2 ? Logger::WARN : Logger::INFO, "Poll #{poll.name} @ #{location.name}/undefined/undefined}: Obtained #{votes_percentage} / Expected #{population_percentage} / Coefficient #{coefficient}")
           
-          poll_options.each do |poll_option|
-            poll_option_votes = location_votes.where(choice: poll_option)
-            poll_option_result = (poll_option_votes.count.to_f / votes.count.to_f) * coefficient
-            results[poll_option.id] += poll_option_result
-          end
-        end
+        #   poll_options.each do |poll_option|
+        #     poll_option_votes = location_votes.where(choice: poll_option)
+        #     poll_option_result = (poll_option_votes.count.to_f / votes.count.to_f) * coefficient
+        #     results[poll_option.id] += poll_option_result
+        #   end
+        # end
 
       end
 
-      puts "  Adding votes without location"
+      # puts "  Adding votes without location"
 
-      spare_votes = votes.where(users: { location: nil, gender: nil, age: nil })
-      if spare_votes.count > 0
-        votes_percentage = spare_votes.count.to_f / votes.count.to_f
+      # spare_votes = votes.where(users: { location: nil, gender: nil, age: nil })
+      # if spare_votes.count > 0
+      #   votes_percentage = spare_votes.count.to_f / votes.count.to_f
 
-        logger.info("Poll #{poll.name} @ undefined/undefined/undefined}: Obtained #{votes_percentage} / Expected undefined / Coefficient undefined")
+      #   logger.info("Poll #{poll.name} @ undefined/undefined/undefined}: Obtained #{votes_percentage} / Expected undefined / Coefficient undefined")
 
-        poll_options.each do |poll_option|
-          poll_option_votes = spare_votes.where(choice: poll_option)
-          poll_option_result = poll_option_votes.count.to_f / votes.count.to_f
-          results[poll_option.id] += poll_option_result
-        end
-      end
+      #   poll_options.each do |poll_option|
+      #     poll_option_votes = spare_votes.where(choice: poll_option)
+      #     poll_option_result = poll_option_votes.count.to_f / votes.count.to_f
+      #     results[poll_option.id] += poll_option_result
+      #   end
+      # end
 
       puts "Saving results for #{poll.name}"
 
