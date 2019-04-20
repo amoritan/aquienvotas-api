@@ -2,6 +2,15 @@ language: ruby
 addons:
   postgresql: 9.6
 before_script:
-  - psql -c 'create database aquienvotas_test;' -U postgres
+- psql -c 'create database aquienvotas_test;' -U postgres
 script:
-  - bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rails db:migrate RAILS_ENV=test
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: <%= ENV['ELASTIC_BEANSTALK_ACCESS'] %>
+  secret_access_key: <%= ENV['ELASTIC_BEANSTALK_SECRET'] %>
+  region: sa-east-1
+  app: aquienvotas
+  env: aquienvotas-api
+  on:
+    repo: andresmoritan/aquienvotas-api
