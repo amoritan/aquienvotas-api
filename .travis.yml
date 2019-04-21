@@ -7,10 +7,13 @@ script:
 - bundle exec rails db:migrate RAILS_ENV=test
 deploy:
   provider: elasticbeanstalk
-  access_key_id: <%= ENV['ELASTIC_BEANSTALK_ACCESS'] %>
-  secret_access_key: <%= ENV['ELASTIC_BEANSTALK_SECRET'] %>
+  access_key_id: $ELASTIC_BEANSTALK_ACCESS
+  secret_access_key: $ELASTIC_BEANSTALK_SECRET
   region: sa-east-1
   app: aquienvotas
   env: aquienvotas-api
+  bucket_name: elasticbeanstalk-sa-east-1-286052383564
+  bucket_path: aquienvotas
   on:
     repo: andresmoritan/aquienvotas-api
+    branch: master
