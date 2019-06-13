@@ -31,7 +31,7 @@ class Candidate < ApplicationRecord
   has_one_attached :avatar
 
   def avatar_url
-    self.avatar.attached? ? Rails.application.routes.url_helpers.url_for(self.avatar.variant(combine_options: { resize: "480x480>", gravity: "Center", crop: "480x480+0+0" })) : nil
+    self.avatar.attached? ? self.avatar.variant(combine_options: { resize: "480x480>", gravity: "Center", crop: "480x480+0+0" }).service_url : nil
   end
 
   attr_accessor :result
