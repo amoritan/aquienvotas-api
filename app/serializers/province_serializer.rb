@@ -25,6 +25,6 @@ class ProvinceSerializer < ActiveModel::Serializer
   attributes :id, :name
   has_many :locations
   attribute :ballot, if: -> { scope && scope.location } do
-    object.active_ballot.nil? ? nil : BallotResultsSerializer.new(object.active_ballot)
+    object.active_ballot.nil? ? nil : ActiveModelSerializers::SerializableResource.new(object.active_ballot, { fields: [:id, :name] })
   end
 end
