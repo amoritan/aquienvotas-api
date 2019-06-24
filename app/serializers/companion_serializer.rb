@@ -21,9 +21,7 @@
 
 
 
-class CandidateSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :color, :result
+class CompanionSerializer < ActiveModel::Serializer
+  attributes :id, :name
   attribute :avatar_url, key: :avatar
-  belongs_to :party, unless: -> { object.result }
-  has_one :companion, serializer: CompanionSerializer
 end
