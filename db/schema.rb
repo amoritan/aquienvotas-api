@@ -1,26 +1,3 @@
-########################################################################################
-########################################################################################
-####                                                                                ####
-####  This file is part of AQuienVotas.                                             ####
-####                                                                                ####
-####  AQuienVotas is free software: you can redistribute it and/or modify           ####
-####  it under the terms of the GNU Affero General Public License as published by   ####
-####  the Free Software Foundation, either version 3 of the License, or             ####
-####  (at your option) any later version.                                           ####
-####                                                                                ####
-####  AQuienVotas is distributed in the hope that it will be useful,                ####
-####  but WITHOUT ANY WARRANTY; without even the implied warranty of                ####
-####  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                 ####
-####  GNU Affero General Public License for more details.                           ####
-####                                                                                ####
-####  You should have received a copy of the GNU Affero General Public License      ####
-####  along with AQuienVotas.  If not, see <https://www.gnu.org/licenses/>.         ####
-####                                                                                ####
-########################################################################################
-########################################################################################
-
-
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -33,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_15_115556) do
+ActiveRecord::Schema.define(version: 2019_06_24_153920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -86,6 +63,8 @@ ActiveRecord::Schema.define(version: 2019_02_15_115556) do
     t.uuid "party_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "companion_id"
+    t.index ["companion_id"], name: "index_candidates_on_companion_id"
     t.index ["party_id"], name: "index_candidates_on_party_id"
   end
 

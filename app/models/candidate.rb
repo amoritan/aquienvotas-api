@@ -27,6 +27,7 @@ class Candidate < ApplicationRecord
   belongs_to :party
   has_and_belongs_to_many :ballots
   has_many :votes, as: :choice
+  has_one :companion, class_name: "Candidate", foreign_key: "companion_id"
 
   has_one_attached :avatar
 
