@@ -32,7 +32,7 @@ class Candidate < ApplicationRecord
   has_one_attached :avatar
 
   def avatar_url
-    self.avatar.attached? ? self.avatar.variant(combine_options: { resize: "480x480>", gravity: "Center", crop: "480x480+0+0" }).service_url : nil
+    self.avatar.attached? ? self.avatar.variant(combine_options: { resize: "200x200>", gravity: "Center", crop: "200x200+0+0" }).service_url : nil
   end
 
   attr_accessor :result
