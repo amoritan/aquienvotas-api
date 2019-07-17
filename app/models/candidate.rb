@@ -32,7 +32,17 @@ class Candidate < ApplicationRecord
   has_one_attached :avatar
 
   def avatar_url
-    self.avatar.attached? ? self.avatar.variant(combine_options: { resize: "200x200>", gravity: "Center", crop: "200x200+0+0" }).service_url : nil
+    # if self.avatar.attached?
+    #   if Rails.application.config.active_storage.service == :local
+    #     Rails.application.routes.url_helpers.url_for(self.avatar.variant(combine_options: { resize: "200x200>", gravity: "Center", crop: "200x200+0+0" }))
+    #   else
+    #     self.avatar.variant(combine_options: { resize: "200x200>", gravity: "Center", crop: "200x200+0+0" }).service_url.split("?").first
+    #   end
+    # else
+    #   nil
+    # end
+
+    self.avatar.attached? ? Rails.application.routes.url_helpers.url_for(self.avatar.variant(combine_options: { resize: "200x200>", gravity: "Center", crop: "200x200+0+0" })) : nil
   end
 
   attr_accessor :result
